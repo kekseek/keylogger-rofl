@@ -17,20 +17,20 @@ namespace IO
         return full + (append_separator ? "\\" : "");
     }
 
-    bool MkOneDr(std::string path)
+    bool MKOneDr(std::string path)
     {
         return (bool)CreateDirectory(path.c_str(), NULL) ||
         GetLastError() == ERROR_ALREADY_EXISTS;
     }
 
-    bool MkDir(std::string path)
+    bool MKDir(std::string path)
     {
         for (char &c : path)
         {
             if (c == '\\')
             {
                 c = '\0';
-                if (!MkOneDr(path))
+                if (!MKOneDr(path))
                 {
                     return false;
                 }
